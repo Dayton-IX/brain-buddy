@@ -11,8 +11,8 @@ fn main() {
         .read_line(&mut entry)
         .expect("Failed to read entry");
 
-    println!("Journal Entry: {}", entry);
-
-    let mut file = File::create("entry.txt");
-    file.expect("Failed to save entry").write_all(entry.as_bytes());
+    File::create("entry.txt")
+        .expect("Failed to create file")
+        .write_all(entry.as_bytes())
+        .expect("Failed to write file");
 }
